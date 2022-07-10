@@ -1,0 +1,17 @@
+Approach 1 - Using set T.C= O(nlogn){n for traversing and logn for inserting element in set }   +O(n) {take out of the set and placed at starting on the array}
+
+Better Approach T.C=O(n)
+
+int remove_duplicate(int a[],int n){
+        if(n==0){
+            return 0;
+        }
+        int i=0;
+        for(int j=0;j<n;j++){
+            if(a[j]!=a[i]){
+                i++;
+                a[i]=a[j];
+            }
+        }
+        return i+1;
+    }
