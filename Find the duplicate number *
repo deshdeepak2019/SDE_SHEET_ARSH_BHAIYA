@@ -1,0 +1,59 @@
+BEST APPROACH WITHOUT MODIFYING ARRAY(TORTOISE METHOD IN O(N) AND O(1)
+
+int findDuplicate(vector<int>& nums) {
+        int slow=nums[0];
+        int fast=nums[0];
+        do{
+            slow=nums[slow];
+            fast=nums[nums[fast]];
+        }while(slow!=fast);
+        fast=nums[0];
+        while(slow!=fast){
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+        return slow;
+    }
+    
+    
+    BY MODIFYING THE ARRAY IN O(N) AND O(1)
+    
+    int findDuplicate(vector<int>& nums) {
+        int p=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[abs(nums[i])]<0){
+              return abs(nums[i]);
+                break;
+            }
+                nums[abs(nums[i])]=(-1)*(nums[abs(nums[i])]);
+        }
+        return p;
+    }
+    
+    
+    USING BINARY SEARCH IN O(LOGN)
+    
+    
+    int findDuplicate(vector<int>& nums) {
+        int low = 1, high = nums.size() - 1, cnt;
+        
+        while(low <=  high)
+        {
+            int mid = low + (high - low) / 2;
+            cnt = 0;
+            // cnt number less than equal to mid
+            for(int n : nums)
+            {
+                if(n <= mid)
+                    ++cnt;
+            }
+            // binary search on left
+            if(cnt <= mid)
+                low = mid + 1;
+            else
+            // binary search on right
+                high = mid - 1;
+            
+        }
+        return low;
+    }
