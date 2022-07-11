@@ -1,5 +1,5 @@
 1. BRUTEFORCE-- O(N*N) AND O(1)
-2. BETTER------O(N) AND O(1)
+2. BETTER------O(N) AND O(N)
 
 
 int maxProfit(vector<int>& nums) {
